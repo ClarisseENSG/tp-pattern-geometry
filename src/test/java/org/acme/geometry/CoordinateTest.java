@@ -1,6 +1,10 @@
 package org.acme.geometry;
 
-import org.junit.Assert;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 public class CoordinateTest {
@@ -10,16 +14,29 @@ public class CoordinateTest {
 	@Test
 	public void testDefaultConstructor(){
 		Coordinate c = new Coordinate();
-		Assert.assertTrue(c.isEmpty());
+		assertTrue(c.isEmpty());
 	}
 	
 	@Test
-	public void testConstructorWithParam() {
+	public void testConstructorWithParamIsNotEmpty() {
+		Coordinate c = new Coordinate(1.0, 1.0);
+		assertFalse(c.isEmpty());
+	}
+	
+	@Test
+	public void testConstructorWithParamGetX() {
 		final double x = 1.0;
 		final double y = 2.0;
 		Coordinate c = new Coordinate(x, y);
-		Assert.assertEquals(x, c.getX(), EPSILON);
-		Assert.assertEquals(y, c.getY(), EPSILON);
+		assertEquals(x, c.getX(), EPSILON);
+	}
+	
+	@Test
+	public void testConstructorWithParamGetY() {
+		final double x = 1.0;
+		final double y = 2.0;
+		Coordinate c = new Coordinate(x, y);
+		assertEquals(y, c.getY(), EPSILON);
 	}
 
 }

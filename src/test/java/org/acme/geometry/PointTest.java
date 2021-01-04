@@ -1,6 +1,9 @@
 package org.acme.geometry;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 public class PointTest {
@@ -10,28 +13,59 @@ public class PointTest {
 	@Test
 	public void testDefaultConstructor() {
 		Point point = new Point();
-		Assert.assertTrue(point.isEmpty());
+		assertTrue(point.isEmpty());
+	}
+	
+	@Test 
+	public void testIsEmptyNull() {
+		Point point = new Point(null);
+		assertTrue(point.isEmpty());
+	}
+	
+	@Test 
+	public void testIsNotEmpty() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		assertFalse(point.isEmpty());
 	}
 	
 	@Test
-	public void testConstructorWithParam() {
-		Point point = SampleFactory.createPointP();
-		Assert.assertEquals(1.0, point.getCoordinate().getX(), EPSILON);
-		Assert.assertEquals(-2.0, point.getCoordinate().getY(), EPSILON);
+	public void testConstructorWithParamGetX() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		assertEquals(1.0, point.getCoordinate().getX(), EPSILON);
+	}
+	
+	@Test
+	public void testConstructorWithParamGetY() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		assertEquals(-2.0, point.getCoordinate().getY(), EPSILON);
 	}
 	
 	@Test
 	public void testGetType() {
 		Point point = new Point();
-		Assert.assertEquals("Point", point.getType());
+		assertEquals(Point.TYPE, point.getType());
 	}
 	
 	@Test
-	public void testTranslate() {
-		Point point = SampleFactory.createPointP();
+	public void testTranslateGetX() {
+		Point point = SampleFactory.createPointPx1yMinus2();
 		
 		point.translate(2.0, -2.0);
-		Assert.assertEquals(3.0, point.getCoordinate().getX(), EPSILON);
-		Assert.assertEquals(-4.0, point.getCoordinate().getY(), EPSILON);
+		assertEquals(3.0, point.getCoordinate().getX(), EPSILON);
+	}
+	
+	@Test
+	public void testTranslateGetY() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		
+		point.translate(2.0, -2.0);
+		assertEquals(-4.0, point.getCoordinate().getY(), EPSILON);
+	}
+	
+	@Test
+	public void testClone() {
+		Point point = SampleFactory.createPointO();
+		Geometry pointClone = point.clone();
+		assertEquals(point, pointClone);
 	}
 }

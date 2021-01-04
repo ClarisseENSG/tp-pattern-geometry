@@ -2,6 +2,7 @@ package org.acme.geometry;
 
 public class Point implements Geometry{
 	
+	public static final String TYPE = "Point";
 	private Coordinate coordinate;
 	
 	public Point() {
@@ -13,17 +14,17 @@ public class Point implements Geometry{
 	}
 
 	public Coordinate getCoordinate() {
-		return coordinate;
+		return this.coordinate;
 	}
 
 	@Override
 	public String getType() {
-		return "Point";
+		return TYPE;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return this.coordinate.isEmpty();
+		return this.coordinate == null || this.coordinate.isEmpty();
 	}
 
 	@Override
@@ -32,5 +33,22 @@ public class Point implements Geometry{
 			this.coordinate.getX() + dx, 
 			this.coordinate.getY() + dy);
 	}
+	
+	@Override
+	public Geometry clone() {
+		return new Point(this.coordinate);
+	}
 
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj.getClass() != this.getClass()) {
+			return false;
+		}
+		Point point = (Point) obj;
+		return point.getCoordinate().equals(this.getCoordinate());
+	}
 }

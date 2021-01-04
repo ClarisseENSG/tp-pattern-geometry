@@ -9,15 +9,19 @@ public class SampleFactory {
 		return new Point();
 	}
 	
-	public static Point createPointP() {
+	public static Point createPointPx1yMinus2() {
 		return new Point(new Coordinate(1.0, -2.0));
 	}
 	
 	public static LineString createLineString() {
-		List<Point> points = new ArrayList<Point>();
-		points.add(createPointP());
+		List<Point> points = new ArrayList<>();
+		points.add(createPointPx1yMinus2());
 		points.add(createPointO());
 		return new LineString(points);
+	}
+	
+	public static LineString createLineStringNull() {
+		return new LineString(null);
 	}
 
 }

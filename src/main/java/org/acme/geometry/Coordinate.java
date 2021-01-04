@@ -16,15 +16,27 @@ public class Coordinate {
 	}
 	
 	public double getX() {
-		return x;
+		return this.x;
 	}
 
 	public double getY() {
-		return y;
+		return this.y;
 	}
 	
-	public Boolean isEmpty() {
+	public boolean isEmpty() {
 		return Double.isNaN(this.x) && Double.isNaN(this.y);
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj.getClass() != this.getClass()) {
+			return false;
+		}
+		Coordinate coordinate = (Coordinate) obj;
+		return ((Double.isNaN(coordinate.getX()) && Double.isNaN(this.getX())) || coordinate.getX() == this.getX()) 
+			&& ((Double.isNaN(coordinate.getY()) && Double.isNaN(this.getY())) || coordinate.getY() == this.getY());
+	}
 }
