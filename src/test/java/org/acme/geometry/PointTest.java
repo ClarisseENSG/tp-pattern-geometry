@@ -10,8 +10,7 @@ public class PointTest {
 	@Test
 	public void testDefaultConstructor() {
 		Point point = new Point();
-		Assert.assertEquals(0.0, point.getCoordinate().getX(), EPSILON);
-		Assert.assertEquals(0.0, point.getCoordinate().getY(), EPSILON);
+		Assert.assertTrue(point.isEmpty());
 	}
 	
 	@Test

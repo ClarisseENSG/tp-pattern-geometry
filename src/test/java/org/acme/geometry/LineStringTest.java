@@ -28,8 +28,7 @@ public static final double EPSILON = 1.0e-15;
 		
 		Assert.assertEquals(1.0, lineString.getPointN(0).getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(-2.0, lineString.getPointN(0).getCoordinate().getY(), EPSILON);
-		Assert.assertEquals(0.0, lineString.getPointN(1).getCoordinate().getX(), EPSILON);
-		Assert.assertEquals(0.0, lineString.getPointN(1).getCoordinate().getY(), EPSILON);
+		Assert.assertTrue(lineString.getPointN(1).isEmpty());
 	}
 	
 	@Test

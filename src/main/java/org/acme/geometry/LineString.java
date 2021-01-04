@@ -28,4 +28,9 @@ public class LineString implements Geometry {
 		return "LineString";
 	}
 
+	@Override
+	public Boolean isEmpty() {
+		return this.points == null;
+	}
+
 }
