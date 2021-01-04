@@ -15,8 +15,7 @@ public class PointTest {
 	
 	@Test
 	public void testConstructorWithParam() {
-		Coordinate coord = new Coordinate(1.0, -2.0);
-		Point point = new Point(coord);
+		Point point = SampleFactory.createPointP();
 		Assert.assertEquals(1.0, point.getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(-2.0, point.getCoordinate().getY(), EPSILON);
 	}
@@ -25,5 +24,14 @@ public class PointTest {
 	public void testGetType() {
 		Point point = new Point();
 		Assert.assertEquals("Point", point.getType());
+	}
+	
+	@Test
+	public void testTranslate() {
+		Point point = SampleFactory.createPointP();
+		
+		point.translate(2.0, -2.0);
+		Assert.assertEquals(3.0, point.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(-4.0, point.getCoordinate().getY(), EPSILON);
 	}
 }

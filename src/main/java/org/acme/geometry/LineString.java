@@ -29,8 +29,15 @@ public class LineString implements Geometry {
 	}
 
 	@Override
-	public Boolean isEmpty() {
+	public boolean isEmpty() {
 		return this.points == null;
+	}
+
+	@Override
+	public void translate(Double dx, Double dy) {
+		for (int i = 0; i < this.points.size(); i++) {
+			this.points.get(i).translate(dx, dy);
+		}
 	}
 
 }

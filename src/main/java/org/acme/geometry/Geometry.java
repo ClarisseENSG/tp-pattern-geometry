@@ -4,6 +4,8 @@ public interface Geometry {
 	
 	public String getType();
 	
-	public Boolean isEmpty();
+	public boolean isEmpty();
+	
+	public void translate(Double dx, Double dy);
 
 }
