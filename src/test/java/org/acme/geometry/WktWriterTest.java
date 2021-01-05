@@ -41,11 +41,4 @@ public class WktWriterTest {
 		assertEquals("LINESTRING(1.0 -2.0,2.0 3.0,4.0 5.0)", writer.write(geometry));
 	}
 	
-	@Test
-	public void testWriteNotAGeometry() {
-		Geometry geometry = (Geometry) new Object();
-		WktWriter writer = new WktWriter();
-		assertEquals("geometry type not supported", writer.write(geometry));
-	}
-
 }
