@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class LineStringTest {
 	
-public static final double EPSILON = 1.0e-15;
+	public static final double EPSILON = 1.0e-15;
 	
 	@Test
 	public void testDefaultConstructor() {
