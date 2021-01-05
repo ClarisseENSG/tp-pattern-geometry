@@ -12,6 +12,10 @@ public interface Geometry {
 	
 	public Envelope getEnvelope();
 	
+	public String asText();
+	
 	public void accept(GeometryVisitor visitor);
+	
+	public void addListener(GeometryListener listener);
 
 }

@@ -2,6 +2,7 @@ package org.acme.geometry;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -106,4 +107,19 @@ public class PointTest {
 		Envelope envelope = point.getEnvelope();
 		assertEquals(-2.0, envelope.getYmax(), EPSILON);
 	}
+	
+	@Test
+	public void testEqualsNull() {
+		Object obj = null;
+		Point point = SampleFactory.createPointPx1yMinus2();
+		assertNotEquals(point, obj);
+	}
+	
+	@Test
+	public void testEqualsDifferentClass() {
+		Object obj = new Object();
+		Point point = SampleFactory.createPointPx1yMinus2();
+		assertNotEquals(point, obj);
+	}
+
 }

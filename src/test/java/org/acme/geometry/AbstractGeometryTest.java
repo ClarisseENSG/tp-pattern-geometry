@@ -11,6 +11,5 @@ public class AbstractGeometryTest {
 		AbstractGeometry geometry = new Point(new Coordinate(3.0, 4.0));
 		assertEquals("POINT(3.0 4.0)", geometry.asText());
 	}
-	
 
 }

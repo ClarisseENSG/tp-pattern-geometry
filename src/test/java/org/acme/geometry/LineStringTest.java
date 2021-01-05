@@ -2,6 +2,7 @@ package org.acme.geometry;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -127,6 +128,20 @@ public class LineStringTest {
 		LineString lineString = SampleFactory.createLineStringThreePoints();
 		Envelope envelope = lineString.getEnvelope();
 		assertEquals(5.0, envelope.getYmax(), EPSILON);
+	}
+	
+	@Test
+	public void testEqualsNull() {
+		Object obj = null;
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		assertNotEquals(lineString, obj);
+	}
+	
+	@Test
+	public void testEqualsDifferentClass() {
+		Object obj = new Object();
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		assertNotEquals(lineString, obj);
 	}
 
 }

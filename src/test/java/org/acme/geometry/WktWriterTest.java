@@ -41,4 +41,38 @@ public class WktWriterTest {
 		assertEquals("LINESTRING(1.0 -2.0,2.0 3.0,4.0 5.0)", writer.write(geometry));
 	}
 	
+	@Test(expected = RuntimeException.class)
+	public void testRuntimeException() {
+		WrongGeometry wrongGeometry = new WrongGeometry();
+		WktWriter writer = new WktWriter();
+		writer.write(wrongGeometry);
+	}
+	
+	private class WrongGeometry extends AbstractGeometry {
+
+		@Override
+		public String getType() {
+			return null;
+		}
+
+		@Override
+		public boolean isEmpty() {
+			return false;
+		}
+
+		@Override
+		public void translate(Double dx, Double dy) {
+		}
+
+		@Override
+		public void accept(GeometryVisitor visitor) {
+		}
+
+		@Override
+		public Geometry clone() {
+			return null;
+		}
+		
+	}
+	
 }
