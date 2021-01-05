@@ -24,32 +24,32 @@ public class EnvelopeBuilderTest {
 	@Test
 	public void getXMin() {
 		EnvelopeBuilder envelopeBuilder = new EnvelopeBuilder();
-		envelopeBuilder.insert(new Coordinate(0.0, 0.0));
-		envelopeBuilder.insert(new Coordinate(1.0, 1.0));
+		envelopeBuilder.insert(new Coordinate(0.0, 0.5));
+		envelopeBuilder.insert(new Coordinate(1.0, 1.5));
 		assertEquals(0.0, envelopeBuilder.build().getXmin(),EPSILON);
 	}
 	
 	@Test
 	public void getYMin() {
 		EnvelopeBuilder envelopeBuilder = new EnvelopeBuilder();
-		envelopeBuilder.insert(new Coordinate(0.0, 0.0));
-		envelopeBuilder.insert(new Coordinate(1.0, 1.0));
-		assertEquals(0.0, envelopeBuilder.build().getYmin(),EPSILON);
+		envelopeBuilder.insert(new Coordinate(0.0, 0.5));
+		envelopeBuilder.insert(new Coordinate(1.0, 1.5));
+		assertEquals(0.5, envelopeBuilder.build().getYmin(),EPSILON);
 	}
 
 	@Test
 	public void getXMax() {
 		EnvelopeBuilder envelopeBuilder = new EnvelopeBuilder();
-		envelopeBuilder.insert(new Coordinate(0.0, 0.0));
-		envelopeBuilder.insert(new Coordinate(1.0, 1.0));
+		envelopeBuilder.insert(new Coordinate(0.0, 0.5));
+		envelopeBuilder.insert(new Coordinate(1.0, 1.5));
 		assertEquals(1.0, envelopeBuilder.build().getXmax(),EPSILON);
 	}
 	
 	@Test
 	public void getYMax() {
 		EnvelopeBuilder envelopeBuilder = new EnvelopeBuilder();
-		envelopeBuilder.insert(new Coordinate(0.0, 0.0));
-		envelopeBuilder.insert(new Coordinate(1.0, 1.0));
-		assertEquals(1.0, envelopeBuilder.build().getYmax(),EPSILON);
+		envelopeBuilder.insert(new Coordinate(0.0, 0.5));
+		envelopeBuilder.insert(new Coordinate(1.0, 1.5));
+		assertEquals(1.5, envelopeBuilder.build().getYmax(),EPSILON);
 	}
 }

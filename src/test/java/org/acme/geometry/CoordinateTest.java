@@ -18,6 +18,18 @@ public class CoordinateTest {
 	}
 	
 	@Test
+	public void testDefaultConstructorDoubleNaNX(){
+		Coordinate c = new Coordinate();
+		assertTrue(Double.isNaN(c.getX()));
+	}
+	
+	@Test
+	public void testDefaultConstructorDoubleNaNY(){
+		Coordinate c = new Coordinate();
+		assertTrue(Double.isNaN(c.getY()));
+	}
+	
+	@Test
 	public void testConstructorWithParamIsNotEmpty() {
 		Coordinate c = new Coordinate(1.0, 1.0);
 		assertFalse(c.isEmpty());
@@ -38,5 +50,5 @@ public class CoordinateTest {
 		Coordinate c = new Coordinate(x, y);
 		assertEquals(y, c.getY(), EPSILON);
 	}
-
+	
 }

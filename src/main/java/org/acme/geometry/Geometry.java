@@ -9,5 +9,7 @@ public interface Geometry {
 	public void translate(Double dx, Double dy);
 	
 	public Geometry clone();
+	
+	public Envelope getEnvelope();
 
 }

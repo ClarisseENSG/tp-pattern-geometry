@@ -17,8 +17,8 @@ public class EnvelopeTest {
 	
 	@Test
 	public void testConstructorWithParamBottomLeft() {
-		final Coordinate bottomLeft = new Coordinate(1.0, 1.0);
-		final Coordinate topRight = new Coordinate(2.0, 2.0);
+		final Coordinate bottomLeft = new Coordinate(1.0, 2.0);
+		final Coordinate topRight = new Coordinate(3.0, 4.0);
 		Envelope envelope = new Envelope(bottomLeft, topRight);
 		Coordinate coordinate = new Coordinate(envelope.getXmin(), envelope.getYmin());
 		assertEquals(bottomLeft, coordinate);
@@ -26,8 +26,8 @@ public class EnvelopeTest {
 	
 	@Test
 	public void testConstructorWithParamTopRight() {
-		final Coordinate bottomLeft = new Coordinate(1.0, 1.0);
-		final Coordinate topRight = new Coordinate(2.0, 2.0);
+		final Coordinate bottomLeft = new Coordinate(1.0, 2.0);
+		final Coordinate topRight = new Coordinate(3.0, 4.0);
 		Envelope envelope = new Envelope(bottomLeft, topRight);
 		Coordinate coordinate = new Coordinate(envelope.getXmax(), envelope.getYmax());
 		assertEquals(topRight, coordinate);

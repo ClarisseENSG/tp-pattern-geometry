@@ -47,8 +47,12 @@ public class LineString implements Geometry {
 	}
 	
 	@Override
-	public Geometry clone() {
-		return new LineString(this.points);
+	public LineString clone() {
+		List<Point> newPoints = new ArrayList<>(getNumPoints());
+		for (Point point : this.points) {
+			newPoints.add(point.clone());
+		}
+		return new LineString(newPoints);
 	}
 	
 	@Override
@@ -61,6 +65,15 @@ public class LineString implements Geometry {
 		}
 		LineString lineString = (LineString) obj;
 		return this.points.equals(lineString.points);
+	}
+
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		for(Point point : this.points) {
+			builder.insert(point.getCoordinate());
+		}
+		return builder.build();
 	}
 	
 }

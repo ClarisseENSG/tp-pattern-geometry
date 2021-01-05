@@ -100,5 +100,33 @@ public class LineStringTest {
 		Geometry lineStringClone = lineString.clone();
 		assertEquals(lineString, lineStringClone);
 	}
+	
+	@Test
+	public void testGetEnvelopeXMin() {
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		Envelope envelope = lineString.getEnvelope();
+		assertEquals(1.0, envelope.getXmin(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeYMin() {
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		Envelope envelope = lineString.getEnvelope();
+		assertEquals(-2.0, envelope.getYmin(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeXMax() {
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		Envelope envelope = lineString.getEnvelope();
+		assertEquals(4.0, envelope.getXmax(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeYMax() {
+		LineString lineString = SampleFactory.createLineStringThreePoints();
+		Envelope envelope = lineString.getEnvelope();
+		assertEquals(5.0, envelope.getYmax(), EPSILON);
+	}
 
 }

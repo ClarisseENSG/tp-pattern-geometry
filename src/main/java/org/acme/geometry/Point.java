@@ -35,7 +35,7 @@ public class Point implements Geometry{
 	}
 	
 	@Override
-	public Geometry clone() {
+	public Point clone() {
 		return new Point(this.coordinate);
 	}
 
@@ -50,5 +50,12 @@ public class Point implements Geometry{
 		}
 		Point point = (Point) obj;
 		return point.getCoordinate().equals(this.getCoordinate());
+	}
+
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		builder.insert(coordinate);
+		return builder.build();
 	}
 }

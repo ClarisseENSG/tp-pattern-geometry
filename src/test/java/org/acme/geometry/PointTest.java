@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class PointTest {
 
@@ -13,6 +14,15 @@ public class PointTest {
 	@Test
 	public void testDefaultConstructor() {
 		Point point = new Point();
+		assertTrue(point.isEmpty());
+	}
+	
+
+	@Test 
+	public void testIsEmpty() {
+		Coordinate coordinate = Mockito.mock(Coordinate.class);
+		Mockito.when(coordinate.isEmpty()).thenReturn(true);
+		Point point = new Point(coordinate);
 		assertTrue(point.isEmpty());
 	}
 	
@@ -67,5 +77,33 @@ public class PointTest {
 		Point point = SampleFactory.createPointO();
 		Geometry pointClone = point.clone();
 		assertEquals(point, pointClone);
+	}
+	
+	@Test
+	public void testGetEnvelopeXMin() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		Envelope envelope = point.getEnvelope();
+		assertEquals(1.0, envelope.getXmin(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeYMin() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		Envelope envelope = point.getEnvelope();
+		assertEquals(-2.0, envelope.getYmin(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeXMax() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		Envelope envelope = point.getEnvelope();
+		assertEquals(1.0, envelope.getXmax(), EPSILON);
+	}
+	
+	@Test
+	public void testGetEnvelopeYMax() {
+		Point point = SampleFactory.createPointPx1yMinus2();
+		Envelope envelope = point.getEnvelope();
+		assertEquals(-2.0, envelope.getYmax(), EPSILON);
 	}
 }
